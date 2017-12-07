@@ -3,30 +3,20 @@
 	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <title>Demo - JavaScript A* Search Algorithm</title>
+        <title>搬运演示</title>
 		<link rel="stylesheet" type="text/css" media="screen, projection" href="demo.css" />
 	</head>
 <body>
-	<div id="header"> 
-        <h1>javascript-astar</h1>
-        <div class='buttons'>
-            <a class='btn' href='http://github.com/bgrins/javascript-astar'>Github</a> 
-            <a class='btn' href='http://www.briangrinstead.com/blog/astar-search-algorithm-in-javascript-updated'>Article</a>
-        </div>
-        <div class="links">
-            <a href='../'>Home</a> |
-            <a href='../demo/'>Demo</a> |
-            <a href='../test/'>Tests</a> |
-            <a href='../benchmark/'>Benchmark</a>
-        </div>
+	<div id="header" style="margin: 20px"> 
+        <h1>简单演示寻址及路径规划<h1>
 	</div>
 
 	<div id="content">
-		<h2>Demonstration</h2>
+		<h2>算法演示</h2>
 
 	    <div id="controls" class='clear'>
 
-	    		<label for="selectWallFrequency">Wall Frequency: </label>
+	    		<label for="selectWallFrequency">货架随机生成</label>
 	    		<select id="selectWallFrequency">
 	    			<option value=".1">10%</option>
 	    			<option value=".2">20%</option>
@@ -34,7 +24,7 @@
 	    			<option value=".4">40%</option>
 	    		</select>
 	    		<br />
-	    		<label for="selectGridSize">Grid Size: </label>
+	    		<label for="selectGridSize">仓库尺寸 </label>
 	    		<select id="selectGridSize" name="selectGridSize">
 	    			<option value="10">10x10</option>
 	    			<option value="15">15x15</option>
@@ -47,22 +37,20 @@
 	    		</select>
 
 	    		<br />
-	    		<label for="checkDebug">Show search info?</label>
+	    		<label for="checkDebug">算法信息</label>
 	    		<input type="checkbox" name="checkDebug" id="checkDebug" />
 	    		<br />
-	    		<label for="searchDiagonal">Allow diagonal movement?</label>
+	    		<label for="searchDiagonal">是否允许对角移动</label>
 	    		<input type="checkbox" name="searchDiagonal" id="searchDiagonal" />
 	    		<br />
-	    		<label for="checkClosest">Closest node if target unreachable?</label>
+	    		<label for="checkClosest">如果无法到达，是否移动到目标最近点</label>
 	    		<input type="checkbox" name="checkClosest" id="checkClosest" />
+	    			    		
+	    		<input type="hidden" name="generateWeights" id="generateWeights" value="false"/>
+	    		
+	    		<input type="hidden" name="displayWeights" id="displayWeights" value="false"/>
 	    		<br />
-	    		<label for="generateWeights">Add random weights?</label>
-	    		<input type="checkbox" name="generateWeights" id="generateWeights" />
-	    		<br />
-	    		<label for="displayWeights">Display weight values?</label>
-	    		<input type="checkbox" name="displayWeights" id="displayWeights" />
-	    		<br />
-	    		<input type="button" id="btnGenerate" value="Generate New Map" />
+	    		<input type="button" id="btnGenerate" value="生成仓库随机图" />
 	    		<fieldset id='weightsKey'>
 	    			<legend>Key:</legend>
 	    			<div>
@@ -75,11 +63,11 @@
 	    			<span class="grid_item wall" style="width: 14.25px; height: 14.25px; margin-right: 6px;" id="keyWall"></span> Wall (imapassable) </div>
 	    		</fieldset>
 				<br />
-		<span id="message">Click on a grid position to search</span>
+		<span id="message">点击地图指定目的地</span>
 	    </div>
 
 	    <div id="main">
-	    	<div id="search_grid">Loading grid...</div>
+	    	<div id="search_grid">载入地图</div>
 	    </div>
 
 	</div>
@@ -87,7 +75,6 @@
 
 	<script type='text/javascript' src='jquery-1.7.1.min.js'></script>
 	<script type='text/javascript' src='../astar.js'></script>
-	<!--<script type='text/javascript' src='../dist/astar-concat.js'></script>-->
 	<script type='text/javascript' src='demo.js'></script>
 </body>
 </html>

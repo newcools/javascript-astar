@@ -156,11 +156,11 @@ GraphSearch.prototype.cellClicked = function($end) {
         duration = (fTime-sTime).toFixed(2);
 
     if(path.length === 0) {
-        $("#message").text("couldn't find a path (" + duration + "ms)");
+        $("#message").text("不好意思，此路不通 (时长： " + duration + "毫秒)");
         this.animateNoPath();
     }
     else {
-        $("#message").text("search took " + duration + "ms.");
+        $("#message").text("路径运算花费时间 " + duration + "毫秒.");
         this.drawDebugInfo();
         this.animatePath(path);
     }
@@ -200,7 +200,7 @@ GraphSearch.prototype.animateNoPath = function() {
 };
 GraphSearch.prototype.animatePath = function(path) {
     var grid = this.grid,
-        timeout = 1000 / grid.length,
+        timeout = 5000 / grid.length,
         elementFromNode = function(node) {
         return grid[node.x][node.y];
     };
